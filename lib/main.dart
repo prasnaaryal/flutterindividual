@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:indiproject/screens/auth/forget_password_screen.dart';
 import 'package:indiproject/screens/auth/login_screen.dart';
 import 'package:indiproject/screens/auth/register_screen.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
       child: GlobalLoaderOverlay(
         useDefaultLoading: false,
         overlayWidget: Center(
-          child: Image.asset("assets/images/loader.gif", height: 100, width: 100,),
+          child: Image.asset("assets/images/logo.png", height: 100, width: 100,),
         ),
         child: Consumer<GlobalUIViewModel>(
           builder: (context, loader, child) {
@@ -61,9 +62,11 @@ class MyApp extends StatelessWidget {
                 // or simply save your changes to "hot reload" in a Flutter IDE).
                 // Notice that the counter didn't reset back to zero; the application
                 // is not restarted.
-                primarySwatch: Colors.blue,
+                primarySwatch: Colors.pink,
+                textTheme: GoogleFonts.poppinsTextTheme(),
+              
               ),
-              initialRoute: "/splash",
+              initialRoute: "/login",
               routes: {
                 "/login": (BuildContext context)=>LoginScreen(),
                 // "/splash": (BuildContext context)=>SplashScreen(),
