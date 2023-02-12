@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.black,
                         size: 22.0,
                       ),
-                      hintText: 'Username',
+                      hintText: 'Email Address',
                       hintStyle: TextStyle( fontSize: 17.0),
                     ),
                   ),

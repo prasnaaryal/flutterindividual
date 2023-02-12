@@ -1,12 +1,23 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:indiproject/screens/account/account_screen.dart';
 import 'package:indiproject/screens/auth/forget_password_screen.dart';
 import 'package:indiproject/screens/auth/login_screen.dart';
 import 'package:indiproject/screens/auth/register_screen.dart';
+import 'package:indiproject/screens/category/single_category_screen.dart';
+import 'package:indiproject/screens/dashboard/dashboard.dart';
+import 'package:indiproject/screens/favorite/favorite_screen.dart';
+import 'package:indiproject/screens/home/home_screen.dart';
+import 'package:indiproject/screens/product/add_product_screen.dart';
+import 'package:indiproject/screens/product/edit_product_screen.dart';
+import 'package:indiproject/screens/product/my_product_screen.dart';
+import 'package:indiproject/screens/product/single_product_screen.dart';
 import 'package:indiproject/services/local_notification_service.dart';
 import 'package:indiproject/viewmodels/auth_viewmodel.dart';
+import 'package:indiproject/viewmodels/category_viewmodel.dart';
 import 'package:indiproject/viewmodels/global_ui_viewmodel.dart';
+import 'package:indiproject/viewmodels/product_viewmodel.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 import 'package:provider/provider.dart';
@@ -35,8 +46,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider (create: (_) => GlobalUIViewModel()),
         ChangeNotifierProvider (create: (_) => AuthViewModel()),
-        // ChangeNotifierProvider (create: (_) => CategoryViewModel()),
-        // ChangeNotifierProvider (create: (_) => ProductViewModel()),
+        ChangeNotifierProvider (create: (_) => CategoryViewModel()),
+        ChangeNotifierProvider (create: (_) => ProductViewModel()),
       ],
       child: GlobalLoaderOverlay(
         useDefaultLoading: false,
@@ -72,12 +83,15 @@ class MyApp extends StatelessWidget {
                 // "/splash": (BuildContext context)=>SplashScreen(),
                 "/register": (BuildContext context)=>RegisterScreen(),
                 "/forget-password": (BuildContext context)=>ForgetPasswordScreen(),
-              //   "/dashboard": (BuildContext context)=>DashboardScreen(),
-              //   "/add-product": (BuildContext context)=>AddProductScreen(),
-              //   "/edit-product": (BuildContext context)=>EditProductScreen(),
-              //   "/single-product": (BuildContext context)=>SingleProductScreen(),
-              //   "/single-category": (BuildContext context)=>SingleCategoryScreen(),
-              //   "/my-products": (BuildContext context)=>MyProductScreen(),
+                "/dashboard": (BuildContext context)=>DashboardScreen(),
+                "/add-product": (BuildContext context)=>AddProductScreen(),
+                "/edit-product": (BuildContext context)=>EditProductScreen(),
+                "/single-product": (BuildContext context)=>SingleProductScreen(),
+                "/single-category": (BuildContext context)=>SingleCategoryScreen(),
+                "/my-products": (BuildContext context)=>MyProductScreen(),
+                "/homescreen": (BuildContext context)=>HomeScreen(),
+                "/favorite": (BuildContext context)=>FavoriteScreen(),
+                "/accscreen": (BuildContext context)=>AccountScreen(),
                },
             );
           }

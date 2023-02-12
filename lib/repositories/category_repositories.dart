@@ -43,11 +43,11 @@ class CategoryRepository{
 
   List<CategoryModel> makeCategory(){
       return [
-        CategoryModel(categoryName: "Mobile Phones and Accessories", status: "active", imageUrl: "https://reviews.com.np/uploads/article/top-10-phones-under-30k-in-nepal-2020/top-10-phones-under-30k-in-nepal-2020.jpeg"),
-        CategoryModel(categoryName: "Automobile", status: "active", imageUrl: "https://i2-prod.dailyrecord.co.uk/incoming/article25217715.ece/ALTERNATES/s615/0_Daily-Record-Road-Record.jpg"),
-        CategoryModel(categoryName: "Apparel", status: "active", imageUrl: "https://www.techprevue.com/wp-content/uploads/2016/05/online-apparel-business.jpg"),
-        CategoryModel(categoryName: "Computers and Peripherals", status: "active", imageUrl: "https://i2.wp.com/d3d2ir91ztzaym.cloudfront.net/uploads/2020/07/computer-peripherals.jpeg"),
-        CategoryModel(categoryName: "Music Instruments", status: "active", imageUrl: "https://img.texasmonthly.com/2013/04/ESSENTIALS_680X382.jpg"),
+        CategoryModel(categoryName: "Highlighter", status: "active", imageUrl: "https://cdn.shopify.com/s/files/1/1699/6985/products/rarebeautyMesmerize_800x.png?v=1670413503"),
+        CategoryModel(categoryName: "Blush", status: "active", imageUrl: "https://www.sephora.com/productimages/sku/s2618817-av-7-zoom.jpg"),
+        CategoryModel(categoryName: "Lip", status: "active", imageUrl: "https://cdn-cf.ipsy.com/contentAsset/image/a9123fe3-d643-4924-8b8b-fb38fcd0b164/fileAsset?byInode=1"),
+        CategoryModel(categoryName: "Eye", status: "active", imageUrl: "http://cdn.shopify.com/s/files/1/0314/1143/7703/products/LIQUID_LINER-SKU-1.jpg?v=1630031335"),
+        CategoryModel(categoryName: "Face", status: "active", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSpVnkBP4AXPJfHudzevDkh91cZLNoBWppbg&usqp=CAU"),
       ];
   }
 
