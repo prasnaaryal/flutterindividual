@@ -1,46 +1,91 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:indiproject/Homescreen/login.dart';
-import 'Homescreen/home_screen.dart';
+import 'package:indiproject/screens/auth/forget_password_screen.dart';
+import 'package:indiproject/screens/auth/login_screen.dart';
+import 'package:indiproject/screens/auth/register_screen.dart';
+import 'package:indiproject/services/local_notification_service.dart';
+import 'package:indiproject/viewmodels/auth_viewmodel.dart';
+import 'package:indiproject/viewmodels/global_ui_viewmodel.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'package:provider/provider.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    // options: FirebaseOptions(
+    //   apiKey: "AIzaSyDZopgwT3FXAHhsTs2c78yk-dw92lnnEK8",
+    //   appId: "1:350617005648:web:64921c07aa521069b4ab55",
+    //   messagingSenderId: "350617005648",
+    //   projectId: "my-app-name-3d643",
+    // ),
+  );
+  NotificationService.initialize();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider (create: (_) => GlobalUIViewModel()),
+        ChangeNotifierProvider (create: (_) => AuthViewModel()),
+        // ChangeNotifierProvider (create: (_) => CategoryViewModel()),
+        // ChangeNotifierProvider (create: (_) => ProductViewModel()),
+      ],
+      child: GlobalLoaderOverlay(
+        useDefaultLoading: false,
+        overlayWidget: Center(
+          child: Image.asset("assets/images/loader.gif", height: 100, width: 100,),
+        ),
+        child: Consumer<GlobalUIViewModel>(
+          builder: (context, loader, child) {
+            if(loader.isLoading){
+              context.loaderOverlay.show();
+            }else{
+              context.loaderOverlay.hide();
+            }
+            return MaterialApp(
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                // This is the theme of your application.
+                //
+                // Try running your application with "flutter run". You'll see the
+                // application has a blue toolbar. Then, without quitting the app, try
+                // changing the primarySwatch below to Colors.green and then invoke
+                // "hot reload" (press "r" in the console where you ran "flutter run",
+                // or simply save your changes to "hot reload" in a Flutter IDE).
+                // Notice that the counter didn't reset back to zero; the application
+                // is not restarted.
+                primarySwatch: Colors.blue,
+              ),
+              initialRoute: "/splash",
+              routes: {
+                "/login": (BuildContext context)=>LoginScreen(),
+                // "/splash": (BuildContext context)=>SplashScreen(),
+                "/register": (BuildContext context)=>RegisterScreen(),
+                "/forget-password": (BuildContext context)=>ForgetPasswordScreen(),
+              //   "/dashboard": (BuildContext context)=>DashboardScreen(),
+              //   "/add-product": (BuildContext context)=>AddProductScreen(),
+              //   "/edit-product": (BuildContext context)=>EditProductScreen(),
+              //   "/single-product": (BuildContext context)=>SingleProductScreen(),
+              //   "/single-category": (BuildContext context)=>SingleCategoryScreen(),
+              //   "/my-products": (BuildContext context)=>MyProductScreen(),
+               },
+            );
+          }
+        ),
       ),
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      initialRoute: "/loginscreen",
-      routes: {
-        // "/homescreen":(BuildContext context) => Homescreen(),
-        "/loginscreen":(BuildContext context) => LoginScreen(),}
-
-
-
-
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect

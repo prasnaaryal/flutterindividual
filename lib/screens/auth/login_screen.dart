@@ -1,7 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+
+import '../../services/local_notification_service.dart';
+import '../../viewmodels/auth_viewmodel.dart';
+import '../../viewmodels/global_ui_viewmodel.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -72,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     validator: ValidateLogin.emailValidate,
-                    style: const TextStyle(fontSize: 16.0, color: Colors.black),
+                    style: const TextStyle(fontFamily: 'WorkSansSemiBold', fontSize: 16.0, color: Colors.black),
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
                       focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
@@ -83,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         size: 22.0,
                       ),
                       hintText: 'Email Address',
-                      hintStyle: TextStyle( fontSize: 17.0),
+                      hintStyle: TextStyle(fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
                     ),
                   ),
                   SizedBox(
@@ -93,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: _passwordController,
                     obscureText: _obscureTextPassword,
                     validator: ValidateLogin.password,
-                    style: const TextStyle(fontSize: 16.0, color: Colors.black),
+                    style: const TextStyle(fontFamily: 'WorkSansSemiBold', fontSize: 16.0, color: Colors.black),
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
                       focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
@@ -138,11 +143,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     width: double.infinity,
                     child: ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.pink.shade100),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20), side: BorderSide(color: Colors.pink.shade200))),
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20), side: BorderSide(color: Colors.blue))),
                           padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(vertical: 20)),
-                        
                         ),
                         onPressed: () {
                           login();
@@ -168,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           child: Text(
                             "Sign up",
-                            style: TextStyle(color: Colors.pink),
+                            style: TextStyle(color: Colors.blue),
                           ))
                     ],
                   ),
