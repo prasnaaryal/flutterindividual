@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     validator: ValidateLogin.emailValidate,
-                    style: const TextStyle(fontFamily: 'WorkSansSemiBold', fontSize: 16.0, color: Colors.black),
+                    style: const TextStyle(fontSize: 16.0, color: Colors.black),
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
                       focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         size: 22.0,
                       ),
                       hintText: 'Email Address',
-                      hintStyle: TextStyle(fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
+                      hintStyle: TextStyle( fontSize: 17.0),
                     ),
                   ),
                   SizedBox(
@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: _passwordController,
                     obscureText: _obscureTextPassword,
                     validator: ValidateLogin.password,
-                    style: const TextStyle(fontFamily: 'WorkSansSemiBold', fontSize: 16.0, color: Colors.black),
+                    style: const TextStyle(fontSize: 16.0, color: Colors.black),
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
                       focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
@@ -143,9 +143,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     width: double.infinity,
                     child: ElevatedButton(
-                        style: ButtonStyle(
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20), side: BorderSide(color: Colors.blue))),
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(Colors.pink.shade100),
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20), side: BorderSide(color: Colors.pink.shade200))),
                           padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(vertical: 20)),
+                        
                         ),
                         onPressed: () {
                           login();
@@ -171,7 +173,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           child: Text(
                             "Sign up",
-                            style: TextStyle(color: Colors.blue),
+                            style: TextStyle(color: Colors.pink),
                           ))
                     ],
                   ),
